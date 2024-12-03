@@ -41,6 +41,7 @@ end
 function BIS:CreateSettingsInterface()
     local settings = CreateFrame("FRAME", "BestInSlotClassicsettings", UIParent);
     settings.name = "BestInSlotClassic";
+    settings.ID = "BestInSlotClassic";
 
     settings.okay = function()
         logger("Settings saved!", LVL_DEBUG);        
@@ -81,7 +82,9 @@ function BIS:CreateSettingsInterface()
 
     BIS:SetValues();
 
-    InterfaceOptions_AddCategory(settings);
+    local category = Settings.RegisterCanvasLayoutCategory(settings, settings.name)
+	category.ID = settings.ID
+	Settings.RegisterAddOnCategory(category)
 end
 
 function BIS:SetValues()    
