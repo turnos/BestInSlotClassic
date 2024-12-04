@@ -1,5 +1,4 @@
 -- Registering the add-on as a category of the interface pane.
-local settings;
 local loglevelDropdown;
 local minimapCheckbox;
 local minimapPosSlider;

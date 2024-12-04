@@ -44,7 +44,7 @@ function BIS:CreateWindow(name, height, width)
     window:SetMovable(true);
     window:SetResizable(false);
     window:SetPoint("CENTER");
-	window:SetMinResize(32, 32);
+    window:SetResizeBounds(32, 32);
 	window:SetSize(height, width);
     window:SetUserPlaced(true);
     window:SetBackdrop(backdrop);

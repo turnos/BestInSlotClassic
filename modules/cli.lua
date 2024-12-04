@@ -4,8 +4,7 @@ function BIS:ShowManager(args)
 end
 
 function BIS:OpenConfigPane(args)
-    InterfaceOptionsFrame_OpenToCategory("BestInSlotClassic");
-    InterfaceOptionsFrame_OpenToCategory("BestInSlotClassic");
+    Settings.OpenToCategory("BestInSlotClassic");
 end
 
 local function ShowHelp(args)
