@@ -304,8 +304,8 @@ local function ResetUI()
 end
 
 local function characterHasBag(bagName)
-    for i = 1, 4 do
-        if GetBagName(i) == bagName then
+    for i = 1, NUM_BAG_SLOTS do
+        if C_Container.GetBagName(i) == bagName then
             return true;
         end
     end
@@ -314,12 +314,12 @@ end
 
 local function characterHasItem(itemId)
     local hasItem = false;    
-	if IsEquippedItem(itemId) then
+	if C_Item.IsEquippedItem(itemId) then
 		hasItem = true;
 	else
 		for i = 0, NUM_BAG_SLOTS do
-		    for z = 1, GetContainerNumSlots(i) do
-		        if GetContainerItemID(i, z) == itemId then
+		    for z = 1, ContainerFrame_GetContainerNumSlots(i) do
+		        if Item:CreateFromBagAndSlot(i, z).GetItemID == itemId then
 		        	hasItem = true;
 		            break
 		        end
