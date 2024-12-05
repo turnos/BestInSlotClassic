@@ -2,6 +2,7 @@
 local loglevelDropdown;
 local minimapCheckbox;
 local minimapPosSlider;
+local onlyShowMyClass;
 
 local function HandleLogLevelDropDown(self, arg1, arg2, checked)    
     local args = arg1:lower();    
@@ -64,15 +65,21 @@ function BIS:CreateSettingsInterface()
     settings.test:SetText("Log level");
     settings.test:SetFont("Fonts\\FRIZQT__.TTF", 11)    
 
+    
     loglevelDropdown = CreateDropDownList("BISCLogLevelDD", settings, 80, 60, -40);
+    
+    onlyShowMyClass = BIS:CreateCheckBox("BISCOnlyShowMyClass", "Show only my BiS" , settings, 70, -85, 150, 20, "Show Best in Slot Ranks only for your class", function(self)  
+        local isChecked = onlyShowMyClass:GetChecked();
+        BestInSlotClassicDB.options.showMyClassOnly = (isChecked);
+    end);
 
-    minimapCheckbox = BIS:CreateCheckBox("BISCMinimapCB", "Show Minimap Icon", settings, 70, -85, 150, 20, "Show/Hide Minimap Icon", function(self)        
+    minimapCheckbox = BIS:CreateCheckBox("BISCMinimapCB", "Show Minimap Icon", settings, 70, -110, 150, 20, "Show/Hide Minimap Icon", function(self)        
         local isChecked = minimapCheckbox:GetChecked();        
         BestInSlotClassicDB.minimap.hide = (not isChecked);        
         BIS:UpdateMinimapIcon();        
     end);
 
-    minimapPosSlider = BIS:CreateSlider("BISCMinimapPosSlider", "Minimap Icon Position", settings, 0, 360, 20, -130, function(self, newValue)
+    minimapPosSlider = BIS:CreateSlider("BISCMinimapPosSlider", "Minimap Icon Position", settings, 0, 360, 20, -150, function(self, newValue)
         if newValue ~= BestInSlotClassicDB.minimap.minimapPos then
             BestInSlotClassicDB.minimap.minimapPos = newValue;
             BIS:UpdateMinimapIcon();
@@ -89,5 +96,6 @@ end
 function BIS:SetValues()    
     minimapCheckbox:SetChecked(not BestInSlotClassicDB.minimap.hide);
     minimapPosSlider:SetValue(BestInSlotClassicDB.minimap.minimapPos);
+    onlyShowMyClass:SetChecked(BestInSlotClassicDB.options.showMyClassOnly)
 end
 

@@ -62,7 +62,9 @@ local function SetDefaults()
         BestInSlotClassicDB = {};
         BestInSlotClassicDB.minimap = {};
         BestInSlotClassicDB.loglevel = nil;
-        BestInSlotClassicDB.options = {};
+        BestInSlotClassicDB.options = {
+            showMyClassOnly = false
+        };
     end
     SetMinimapDefaults();
     SetLogLevelDefaults();
@@ -78,7 +80,7 @@ end
 
 function BIS:LoadItemInfo()
     for idx, itemId in pairs(BIS_ITEM_LOAD) do
-        GetItemInfo(itemId);
+        C_Item.GetItemInfo(itemId);
     end
 end
 
