@@ -1,11 +1,10 @@
-## Author: Wark @ Auberdine-EU
-## X-Min-Interface: 11401
-## X-Curse-Project-ID: 360318
-## X-Wago-ID: ME6gwX61
-## Interface: 11401
-## Title: Best In Slot Classic
+## Author: Turnos @ Thunderstrike-EU
+## X-Credits: Wark @ Auberdine-EU
+## X-Min-Interface: 11505
+## Interface: 11505
+## Title: Best In Slot Classic - Anniversary
 ## Notes: Keep track of your Best in Slot list!
-## Version: 2.5.4
+## Version: 3.0.0-Anniversary-Alpha
 ## SavedVariables: BestInSlotClassicGlobalDB
 ## SavedVariablesPerCharacter: BestInSlotClassicDB
 
