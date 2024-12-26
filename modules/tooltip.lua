@@ -523,13 +523,6 @@ function BIS:OnGameTooltipSetItem(frame)
     BIS_LibExtraTip:AddLine(frame," ",r,g,b,true);
 
     for key, value in pairs(BIS_TOOLTIP_RANKING[itemId][suffixId][faction][raid][worldboss][pvp][14]) do
-        if BestInSlotClassicDB.options.showMyClassOnly then
-            local className, classFileName, classId = UnitClass("player")
-            if classId ~= value.classId then
-                BIS:logmsg("Player class: " ..classId..". Ranking for class: "..value.classId..". ShowMyClassOnly mode is active.", LVL_DEBUG);
-                break;
-            end
-        end
         local color = RAID_CLASS_COLORS[C_CreatureInfo.GetClassInfo(value.classId).classFile];
         local text = "";        
         local add = false;
@@ -593,6 +586,14 @@ function BIS:OnGameTooltipSetItem(frame)
             text = text..(value.P5).." > "..(value.P6);
         else 
             text = text..(value.P6);
+        end
+
+        if BestInSlotClassicDB.options.showMyClassOnly then
+            local className, classFileName, classId = UnitClass("player")
+            if classId ~= value.classId then
+                BIS:logmsg("Player class: " ..classId..". Ranking for class: "..value.classId..". ShowMyClassOnly mode is active.", LVL_DEBUG);
+                add = false;
+            end
         end
 
         if add then
